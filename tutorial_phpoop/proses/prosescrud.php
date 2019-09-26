@@ -16,7 +16,6 @@ class prosesCrud {
         {
             $hasil = $row->fetch();
             $_SESSION['ADMIN'] = $hasil;
-
             // status yang diberikan 
             return "sukses";
         }else{
