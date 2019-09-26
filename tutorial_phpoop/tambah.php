@@ -4,44 +4,7 @@
     //session
 	if(!empty($_SESSION['ADMIN'])){ }else{ header('location:login.php'); }
     // panggil file
-    include 'proses/koneksi.php';
-    include 'proses/prosescrud.php';
-    // cara panggil class di koneksi php
-    $db = new Koneksi();
-    // cara panggil koneksi di fungsi DBConnect()
-    $koneksi =  $db->DBConnect();
-    // panggil class prosesCrud di file proses/prosescrud.php
-    $proses = new prosesCrud($koneksi);
-    // menghilangkan pesan error
-    error_reporting(0);
-    // panggil session ID
-    $id = $_SESSION['ADMIN']['id_login'];
-
-	$sesi = $proses->tampil_data_id('tbl_user','id_login',$id);
-
-	// proses tambah
-	if(!empty($_POST['nama']))
-	{
-		$nama = strip_tags($_POST['nama']);
-		$telepon = strip_tags($_POST['telepon']);
-		$email = strip_tags($_POST['email']);
-		$alamat = strip_tags($_POST['alamat']);
-		$user = strip_tags($_POST['user']);
-		$pass = strip_tags($_POST['pass']);
-		
-		$tabel = 'tbl_user';
-		# proses insert
-		$data[] = array(
-			'username'		=>$user,
-			'password'		=>md5($pass),
-			'nama_pengguna'	=>$nama,
-			'telepon'		=>$telepon,
-			'email'			=>$email,
-			'alamat'		=>$alamat
-		);
-		$proses->tambah_data($tabel,$data);
-        echo '<script>alert("Tambah Data Berhasil");window.location="index.php"</script>';
-	}
+    require 'proses/panggil.php';
 ?>
 
 <!DOCTYPE HTML>
@@ -54,7 +17,7 @@
     <body style="background:#586df5;">
 		<div class="container">
 			<br/>
-			Selamat Datang, <?php echo $sesi['nama_pengguna'];?>
+            <span style="color:#fff";>Selamat Datang, <?php echo $sesi['nama_pengguna'];?></span>
 			<div class="float-right">	
 				<a href="index.php" class="btn btn-success btn-md" style="margin-right:1pc;"><span class="fa fa-home"></span> Kembali</a> 
 				<a href="logout.php" class="btn btn-danger btn-md float-right"><span class="fa fa-sign-out"></span> Logout</a>
@@ -69,7 +32,7 @@
 						<h4 class="card-title">Tambah Pengguna</h4>
 						</div>
 						<div class="card-body">
-							<form action="" method="POST">
+							<form action="proses/crud.php?aksi=tambah" method="POST">
 								<div class="form-group">
 									<label>Nama </label>
 									<input type="text" value="" class="form-control" name="nama">

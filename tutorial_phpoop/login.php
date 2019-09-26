@@ -1,38 +1,6 @@
 <?php
     // session start();
     if(!empty($_SESSION)){ }else{ session_start(); }
-    include 'proses/koneksi.php';
-    include 'proses/prosescrud.php';
-    // cara panggil class di koneksi php
-    $db = new Koneksi();
-    // cara panggil koneksi di fungsi DBConnect()
-    $koneksi =  $db->DBConnect();
-    // panggil class prosesCrud di file proses/prosescrud.php
-    $proses = new prosesCrud($koneksi);
-    // menghilangkan pesan error
-    error_reporting(0);
-
-    // proses login
-    if(!empty($_POST['user']))
-    {   
-        // validasi text untuk filter karakter khusus dengan fungsi strip_tags()
-        $user = strip_tags($_POST['user']);
-        $pass = strip_tags($_POST['pass']);
-
-        // panggil fungsi proses_login() yang ada di class prosesCrud()
-        $result = $proses->proses_login($user,$pass);
-
-        if($result == 'sukses')
-        {
-            echo "<script>window.location='index.php';</script>";
-        }
-        else
-        {
-            echo "<script>$('#notifikasi').show();$('#formlogin')[0].reset();</script>";
-        }
-        // hapus transfer data user dan password dengan unset post
-        unset($user); unset($pass);
-    }
 ?>
 <!doctype html>
 <html>
@@ -68,7 +36,9 @@
                         <h4 class="card-title">Sign in</h4>
                     </div>
                     <div class="card-body">
-                        <form method="post" action="" id="formlogin">
+						<!-- form berfungsi mengirimkan data input 
+						dengan method post ke proses login dengan paramater get aksi login -->
+                        <form method="post" action="proses/crud.php?aksi=login" id="formlogin">
                         <div class="form-group">
                             <label>Your username</label>
                             <input name="user" class="form-control" placeholder="user" type="text" required="required" autocomplete="off">
@@ -92,7 +62,7 @@
     </div>
     <script>
       // notifikasi gagal di hide
-      <?php if(empty($_POST['user'])){?>
+      <?php if(empty($_GET['get'])){?>
         $("#notifikasi").hide();
       <?php }?>
         var logingagal = function(){

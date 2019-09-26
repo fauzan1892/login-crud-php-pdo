@@ -1,30 +1,7 @@
 <?php
     // session start
     if(!empty($_SESSION)){ }else{ session_start(); }
-    // panggil file
-    include 'proses/koneksi.php';
-    include 'proses/prosescrud.php';
-    // cara panggil class di koneksi php
-    $db = new Koneksi();
-    // cara panggil koneksi di fungsi DBConnect()
-    $koneksi =  $db->DBConnect();
-    // panggil class prosesCrud di file proses/prosescrud.php
-    $proses = new prosesCrud($koneksi);
-    // menghilangkan pesan error
-    error_reporting(0);
-    // panggil session ID
-    $id = $_SESSION['ADMIN']['id_login'];
-
-    $sesi = $proses->tampil_data_id('tbl_user','id_login',$id);
-
-    if(!empty($_GET['hapusid']))
-    {
-        $tabel = 'tbl_user';
-        $where = 'id_login';
-        $id = strip_tags($_GET['hapusid']);
-        $proses->hapus_data($tabel,$where,$id);
-        echo '<script>alert("Hapus Data Berhasil");window.location="index.php"</script>';
-    }
+    require 'proses/panggil.php';
 ?>
 
 <!DOCTYPE HTML>
@@ -53,7 +30,7 @@
 
                     <?php if(!empty($_SESSION['ADMIN'])){?>
                     <br/>
-                    Selamat Datang, <?php echo $sesi['nama_pengguna'];?>
+                    <span style="color:#fff";>Selamat Datang, <?php echo $sesi['nama_pengguna'];?></span>
                     <a href="logout.php" class="btn btn-danger btn-md float-right"><span class="fa fa-sign-out"></span> Logout</a>
                     <br/><br/>
                     <a href="tambah.php" class="btn btn-success btn-md"><span class="fa fa-plus"></span> Tambah</a>
@@ -93,7 +70,7 @@
                                         <td style="text-align: center;">
                                             <a href="edit.php?id=<?php echo $isi['id_login'];?>" class="btn btn-success btn-md">
                                             <span class="fa fa-edit"></span></a>
-                                            <a onclick="return confirm('Apakah yakin data akan di hapus?')" href="index.php?hapusid=<?php echo $isi['id_login'];?>" 
+                                            <a onclick="return confirm('Apakah yakin data akan di hapus?')" href="proses/crud.php?aksi=hapus&hapusid=<?php echo $isi['id_login'];?>" 
                                             class="btn btn-danger btn-md"><span class="fa fa-trash"></span></a>
                                         </td>
                                     </tr>
