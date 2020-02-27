@@ -53,12 +53,12 @@
                                         <th style="text-align: center;">Aksi</th>
                                     </tr>
                                 </thead>
+                                <tbody>
                                 <?php
                                     $no=1;
                                     $hasil = $proses->tampil_data('tbl_user');
                                     foreach($hasil as $isi){
                                 ?>
-                                <tbody>
                                     <tr>
                                         <td><?php echo $no; ?></td>
                                         <td><?php echo $isi['nama_pengguna']?></td>
@@ -74,11 +74,11 @@
                                             class="btn btn-danger btn-md"><span class="fa fa-trash"></span></a>
                                         </td>
                                     </tr>
-                                </tbody>
                                 <?php
                                     $no++;
                                     }
                                 ?>
+                                </tbody>
                             </table>
                         </div>
                     </div>
