@@ -11,18 +11,7 @@ class prosesCrud {
         // untuk password kita enkrip dengan md5
         $row = $this->db->prepare('SELECT * FROM tbl_user WHERE username=? AND password=md5(?)');
         $row->execute(array($user,$pass));
-        $count = $row->rowCount();
-        if($count > 0)
-        {
-            $hasil = $row->fetch();
-            $_SESSION['ADMIN'] = $hasil;
-            // status yang diberikan 
-            return "sukses";
-        }else{
-
-            // status yang diberikan 
-            return "gagal";
-        }
+        return $hasil = $row->fetch();
     }
 
     // variable $tabel adalah isi dari nama table database yang ingin ditampilkan

@@ -76,21 +76,20 @@
     // login
     if(!empty($_GET['aksi'] == 'login'))
     {   
-        session_start();
-
         // validasi text untuk filter karakter khusus dengan fungsi strip_tags()
         $user = strip_tags($_POST['user']);
         $pass = strip_tags($_POST['pass']);
-
         // panggil fungsi proses_login() yang ada di class prosesCrud()
         $result = $proses->proses_login($user,$pass);
-
-        if($result == 'sukses')
+        if(isset($result))
         {
+            session_start();
+            $_SESSION['ADMIN'] = $result;
+            // status yang diberikan 
             echo "<script>window.location='../index.php';</script>";
-        }
-        else
-        {
+        }else{
+
+            // status yang diberikan 
             echo "<script>window.location='../login.php?get=gagal';</script>";
         }
     }

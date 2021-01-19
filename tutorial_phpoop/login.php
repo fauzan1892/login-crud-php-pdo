@@ -20,7 +20,7 @@
             <div class="col-sm-4">
                 <br/><br/>
                 <div id="logout">
-                    <?php if(!empty($_GET['signout'] == 'sukses')){?>
+                    <?php if(isset($_GET['signout'])){?>
                         <div class="alert alert-success">
                             <small>Anda Berhasil Logout</small>
                         </div>
