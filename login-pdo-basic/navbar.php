@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<title>
-            <?= $title_project;?> 
+            Barang
         </title>
 		<!-- BOOTSTRAP 4-->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.1/css/bootstrap.css">
@@ -18,7 +18,7 @@
                 <a class="navbar-brand" href="index.php">
                     <b>
                         <i class="fa fa-cog"></i> 
-                        <?= $title_project;?>
+                        Barang
                     </b>
                 </a>
                 <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"

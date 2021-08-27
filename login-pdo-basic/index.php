@@ -10,7 +10,7 @@
 <div class="container">
     <div class="card mt-5">
         <div class="card-header">
-            Data Mahasiswa
+            Data Barang
         </div>
         <div class="card-body">
             <a class="btn btn-primary btn-md" href="tambah.php" role="button">
@@ -21,30 +21,28 @@
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>NPM</th>
-                            <th>Nama Siswa</th>
-                            <th>Fakultas</th>
-                            <th>Tahun</th>
-                            <th>Tanggal Buat</th>
+                            <th>Kd barang</th>
+                            <th>Nama barang</th>
+                            <th>Satuan</th>
+                            <th>Harga</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php 
                             $no = 1;
-                            $sql = "SELECT * FROM tbl_mahasiswa ORDER BY id DESC";
+                            $sql = "SELECT * FROM barang ORDER BY id DESC";
                             $row = $koneksi->prepare($sql);
                             $row->execute();
                             $hasil = $row->fetchAll(PDO::FETCH_OBJ);
                             foreach($hasil as $r) {
                         ?>
                         <tr>
-                            <td><?= $no;?></td>     
-                            <td><?=$r->npm;?></td>      
-                            <td><?=$r->nama_siswa;?></td>      
-                            <td><?=$r->fakultas;?></td>      
-                            <td><?=$r->tahun;?></td>      
-                            <td><?=$r->tgl_buat;?></td>
+                            <td><?= $no;?></td>
+                            <td><?=$r->kd_barang;?></td>      
+                            <td><?=$r->nama_barang;?></td>      
+                            <td><?=$r->satuan;?></td>      
+                            <td><?=$r->harga;?></td>
                             <td>
                                 <a href="<?= "edit.php?id=".$r->id;?>" 
                                     class="btn btn-success btn-sm" 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Aug 22, 2021 at 05:38 PM
+-- Generation Time: Aug 24, 2021 at 07:59 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.9
 
@@ -18,31 +18,37 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `tutorial_phpoop`
+-- Database: `lsp_penjualan`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_mahasiswa`
+-- Table structure for table `barang`
 --
 
-CREATE TABLE `tbl_mahasiswa` (
+CREATE TABLE `barang` (
   `id` int(11) NOT NULL,
-  `npm` varchar(25) DEFAULT NULL,
-  `nama_siswa` varchar(255) DEFAULT NULL,
-  `fakultas` varchar(255) DEFAULT NULL,
-  `tahun` int(11) NOT NULL,
-  `tgl_buat` varchar(255) DEFAULT NULL
+  `kd_barang` varchar(15) DEFAULT NULL,
+  `nama_barang` varchar(50) DEFAULT NULL,
+  `satuan` varchar(15) DEFAULT NULL,
+  `harga` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `barang`
+--
+
+INSERT INTO `barang` (`id`, `kd_barang`, `nama_barang`, `satuan`, `harga`) VALUES
+(1, '123', 'Laptop HP 14 Inchi', 'PCS', 35000);
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_user`
+-- Table structure for table `user`
 --
 
-CREATE TABLE `tbl_user` (
+CREATE TABLE `user` (
   `id_login` int(11) NOT NULL,
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
@@ -53,26 +59,26 @@ CREATE TABLE `tbl_user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `tbl_user`
+-- Dumping data for table `user`
 --
 
-INSERT INTO `tbl_user` (`id_login`, `username`, `password`, `nama_pengguna`, `telepon`, `email`, `alamat`) VALUES
-(2, 'fauzan', '202cb962ac59075b964b07152d234b70', 'Fauzan Falah', '081298669897', 'fauzan.falah17@mhs.ubharajaya.ac.id', 'Ujung Harapan, Bekasi');
+INSERT INTO `user` (`id_login`, `username`, `password`, `nama_pengguna`, `telepon`, `email`, `alamat`) VALUES
+(2, 'admin', '202cb962ac59075b964b07152d234b70', 'admin', '081298669897', 'admin@gmail.com', 'Bekasi');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `tbl_mahasiswa`
+-- Indexes for table `barang`
 --
-ALTER TABLE `tbl_mahasiswa`
+ALTER TABLE `barang`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tbl_user`
+-- Indexes for table `user`
 --
-ALTER TABLE `tbl_user`
+ALTER TABLE `user`
   ADD PRIMARY KEY (`id_login`);
 
 --
@@ -80,15 +86,15 @@ ALTER TABLE `tbl_user`
 --
 
 --
--- AUTO_INCREMENT for table `tbl_mahasiswa`
+-- AUTO_INCREMENT for table `barang`
 --
-ALTER TABLE `tbl_mahasiswa`
+ALTER TABLE `barang`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `tbl_user`
+-- AUTO_INCREMENT for table `user`
 --
-ALTER TABLE `tbl_user`
+ALTER TABLE `user`
   MODIFY `id_login` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 

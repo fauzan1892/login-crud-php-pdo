@@ -17,30 +17,24 @@
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="form-group">
-                            <label for="">NPM</label>
-                            <input type="number" class="form-control" required name="npm" id="npm" placeholder="">
+                            <label for="">Kd barang</label>
+                            <input type="text" class="form-control" required name="kd_barang" id="kd_barang" placeholder="">
                         </div>
+                        
                         <div class="form-group">
-                            <label for="">Nama siswa</label>
-                            <input type="text" class="form-control" required name="nama_siswa" id="nama_siswa" placeholder="">
-                        </div>
-                        <div class="form-group">
-                            <label for="">Fakultas</label>
-                            <input type="text" class="form-control" required name="fakultas" id="fakultas" placeholder="">
+                            <label for="">Nama barang</label>
+                            <input type="text" class="form-control" required name="nama_barang" id="nama_barang" placeholder="">
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group">
-                            <label for="">Tahun</label>
-                            <input type="number" 
-                                class="form-control" 
-                                name="tahun" id="tahun" required placeholder="">
+                            <label for="">Satuan</label>
+                            <input type="text" class="form-control" required name="satuan" id="satuan" placeholder="">
                         </div>
+                        
                         <div class="form-group">
-                            <label for="">Tgl buat</label>
-                            <input type="date" value="<?= date('Y-m-d');?>" 
-                                class="form-control" required name="tgl_buat" 
-                                id="tgl_buat" placeholder="">
+                            <label for="">Harga</label>
+                            <input type="number" class="form-control" required name="harga" id="harga" placeholder="">
                         </div>
                         <div class="form-group">
                             <label for="">Aksi</label>
